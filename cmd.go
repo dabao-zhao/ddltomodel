@@ -1,9 +1,9 @@
 package main
 
 import (
+	"fmt"
 	"github.com/dabao-zhao/ddltomodel/command"
 	"github.com/dabao-zhao/ddltomodel/version"
-	"fmt"
 	"github.com/logrusorgru/aurora"
 	"github.com/spf13/cobra"
 	"log"
@@ -13,10 +13,10 @@ import (
 
 var (
 	rootCmd = &cobra.Command{
-		Use:   "github.com/dabao-zhao/ddltomodel",
+		Use:   "ddltomodel",
 		Short: "A cli tool to generate model code",
 		Long: "A cli tool to generate model code\n\n" +
-			"GitHub: https://github.com/zeromicro/go-zero\n" +
+			"GitHub: https://github.com/dabao-zhao/ddltomodel\n" +
 			"Copy From: https://github.com/zeromicro/go-zero/tools/goctl",
 	}
 
