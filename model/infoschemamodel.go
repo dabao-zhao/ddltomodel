@@ -143,9 +143,9 @@ func (m *InformationSchemaModel) FindIndex(db, table, column string) ([]*DbIndex
 
 	err := m.conn.Table("STATISTICS s").
 		Select("s.INDEX_NAME,s.NON_UNIQUE,s.SEQ_IN_INDEX").
-		Where("c.TABLE_SCHEMA = ?", db).
-		Where("c.TABLE_NAME = ?", table).
-		Where("c.COLUMN_NAME = ?", column).
+		Where("s.TABLE_SCHEMA = ?", db).
+		Where("s.TABLE_NAME = ?", table).
+		Where("s.COLUMN_NAME = ?", column).
 		Find(&reply).Error
 
 	if err != nil {

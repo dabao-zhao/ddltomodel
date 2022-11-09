@@ -38,7 +38,7 @@ func init() {
 	ddlCmd.Flags().StringVarP(&command.VarStringDir, "dir", "d", "", "The target dir")
 	ddlCmd.Flags().StringVar(&command.VarStringDatabase, "database", "", "The name of database [optional]")
 
-	datasourceCmd.Flags().StringVar(&command.VarStringURL, "url", "", `The data source of database,like "root:password@tcp(127.0.0.1:3306)/database"`)
+	datasourceCmd.Flags().StringVarP(&command.VarStringURL, "url", "u", "", `The data source of database,like "root:password@tcp(127.0.0.1:3306)/database"`)
 	datasourceCmd.Flags().StringSliceVarP(&command.VarStringSliceTable, "table", "t", nil, "The table or table globbing patterns in the database")
 	datasourceCmd.Flags().StringVarP(&command.VarStringDir, "dir", "d", "", "The target dir")
 }
