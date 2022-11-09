@@ -5,7 +5,7 @@ const (
 	UpdateMethod = `
 func (m *default{{.upperStartCamelObject}}Model) Update(ctx context.Context, data *{{.upperStartCamelObject}}) (*{{.upperStartCamelObject}}, error) {
 	err := m.conn.Table(m.TableName()).Where("{{.lowerStartCamelPrimaryKey}} = ?", data.{{.upperStartCamelPrimaryKey}}).Updates(&data).Error
-	return ret, err
+	return data, err
 }
 `
 

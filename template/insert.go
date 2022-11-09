@@ -4,7 +4,7 @@ const (
 	InsertMethod = `
 func (m *default{{.upperStartCamelObject}}Model) Insert(ctx context.Context, data *{{.upperStartCamelObject}}) (*{{.upperStartCamelObject}}, error) {
 	err := m.conn.Table(m.TableName()).Create(&data).Error
-	return ret, err
+	return data, err
 }
 `
 
