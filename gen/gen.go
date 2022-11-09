@@ -2,13 +2,14 @@ package gen
 
 import (
 	"bytes"
+	"fmt"
+	"github.com/dabao-zhao/ddltomodel/model"
 	"github.com/dabao-zhao/ddltomodel/output"
 	"github.com/dabao-zhao/ddltomodel/parser"
 	"github.com/dabao-zhao/ddltomodel/template"
 	"github.com/dabao-zhao/ddltomodel/util/filex"
 	"github.com/dabao-zhao/ddltomodel/util/stringx"
 	"github.com/dabao-zhao/ddltomodel/util/trim"
-	"fmt"
 	"log"
 	"os"
 	"path/filepath"
@@ -100,6 +101,32 @@ func (g *defaultGenerator) genFromDDL(filename string, strict bool, database str
 	}
 
 	return m, nil
+}
+
+func (g *defaultGenerator) StartFromInformationSchema(tables map[string]*model.Table, strict bool) error {
+	m := make(map[string]*codeTuple)
+	for _, each := range tables {
+		table, err := parser.ConvertDataType(each, strict)
+		if err != nil {
+			return err
+		}
+
+		code, err := g.genModel(*table)
+		if err != nil {
+			return err
+		}
+		customCode, err := g.genModelCustom(*table)
+		if err != nil {
+			return err
+		}
+
+		m[table.Name.Source()] = &codeTuple{
+			modelCode:       code,
+			modelCustomCode: customCode,
+		}
+	}
+
+	return g.createFile(m)
 }
 
 func (g *defaultGenerator) createFile(modelList map[string]*codeTuple) error {

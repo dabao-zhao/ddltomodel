@@ -25,12 +25,22 @@ var (
 		Short: "Generate mysql model from ddl",
 		RunE:  command.MysqlDDL,
 	}
+
+	datasourceCmd = &cobra.Command{
+		Use:   "datasource",
+		Short: "Generate model from datasource",
+		RunE:  command.MySqlDataSource,
+	}
 )
 
 func init() {
 	ddlCmd.Flags().StringVarP(&command.VarStringSrc, "src", "s", "", "The path or path globbing patterns of the ddl")
 	ddlCmd.Flags().StringVarP(&command.VarStringDir, "dir", "d", "", "The target dir")
 	ddlCmd.Flags().StringVar(&command.VarStringDatabase, "database", "", "The name of database [optional]")
+
+	datasourceCmd.Flags().StringVar(&command.VarStringURL, "url", "", `The data source of database,like "root:password@tcp(127.0.0.1:3306)/database"`)
+	datasourceCmd.Flags().StringSliceVarP(&command.VarStringSliceTable, "table", "t", nil, "The table or table globbing patterns in the database")
+	datasourceCmd.Flags().StringVarP(&command.VarStringDir, "dir", "d", "", "The target dir")
 }
 
 func main() {
@@ -39,6 +49,7 @@ func main() {
 		runtime.GOOS, runtime.GOARCH)
 
 	rootCmd.AddCommand(ddlCmd)
+	rootCmd.AddCommand(datasourceCmd)
 	if err := rootCmd.Execute(); err != nil {
 		log.Println(aurora.Red(err.Error()))
 		os.Exit(1)
