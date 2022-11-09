@@ -265,7 +265,7 @@ func checkDuplicateUniqueIndex(uniqueIndex map[string][]*Field, tableName string
 
 // ConvertDataType converts mysql data type into golang data type
 func ConvertDataType(table *model.Table, strict bool) (*Table, error) {
-	isPrimaryDefaultNull := table.PrimaryKey.ColumnDefault == nil && table.PrimaryKey.IsNullAble == "YES"
+	isPrimaryDefaultNull := table.PrimaryKey.ColumnDefault.Valid == false && table.PrimaryKey.IsNullAble == "YES"
 	isPrimaryUnsigned := strings.Contains(table.PrimaryKey.DbColumn.ColumnType, "unsigned")
 	primaryDataType, err := converter.ConvertStringDataType(table.PrimaryKey.DataType, isPrimaryDefaultNull, isPrimaryUnsigned, strict)
 	if err != nil {
@@ -345,7 +345,7 @@ func ConvertDataType(table *model.Table, strict bool) (*Table, error) {
 func getTableFields(table *model.Table, strict bool) (map[string]*Field, error) {
 	fieldM := make(map[string]*Field)
 	for _, each := range table.Columns {
-		isDefaultNull := each.ColumnDefault == nil && each.IsNullAble == "YES"
+		isDefaultNull := each.ColumnDefault.Valid == false && each.IsNullAble == "YES"
 		isPrimaryUnsigned := strings.Contains(each.ColumnType, "unsigned")
 		dt, err := converter.ConvertStringDataType(each.DataType, isDefaultNull, isPrimaryUnsigned, strict)
 		if err != nil {

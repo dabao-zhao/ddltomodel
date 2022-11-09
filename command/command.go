@@ -2,11 +2,11 @@ package command
 
 import (
 	"errors"
-	"github.com/dabao-zhao/ddltomodel/model"
 	"log"
 	"strings"
 
 	"github.com/dabao-zhao/ddltomodel/gen"
+	"github.com/dabao-zhao/ddltomodel/model"
 	"github.com/dabao-zhao/ddltomodel/util/filex"
 
 	"github.com/go-sql-driver/mysql"

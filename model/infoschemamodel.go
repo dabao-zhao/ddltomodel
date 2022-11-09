@@ -1,6 +1,7 @@
 package model
 
 import (
+	"database/sql"
 	"fmt"
 	"github.com/dabao-zhao/ddltomodel/util/trim"
 	"gorm.io/gorm"
@@ -23,14 +24,14 @@ type (
 
 	// DbColumn defines column info of columns
 	DbColumn struct {
-		Name            string      `gorm:"column:COLUMN_NAME"`
-		DataType        string      `gorm:"column:DATA_TYPE"`
-		ColumnType      string      `gorm:"column:COLUMN_TYPE"`
-		Extra           string      `gorm:"column:EXTRA"`
-		Comment         string      `gorm:"column:COLUMN_COMMENT"`
-		ColumnDefault   interface{} `gorm:"column:COLUMN_DEFAULT"`
-		IsNullAble      string      `gorm:"column:IS_NULLABLE"`
-		OrdinalPosition int         `gorm:"column:ORDINAL_POSITION"`
+		Name            string         `gorm:"column:COLUMN_NAME"`
+		DataType        string         `gorm:"column:DATA_TYPE"`
+		ColumnType      string         `gorm:"column:COLUMN_TYPE"`
+		Extra           string         `gorm:"column:EXTRA"`
+		Comment         string         `gorm:"column:COLUMN_COMMENT"`
+		ColumnDefault   sql.NullString `gorm:"column:COLUMN_DEFAULT"`
+		IsNullAble      string         `gorm:"column:IS_NULLABLE"`
+		OrdinalPosition int            `gorm:"column:ORDINAL_POSITION"`
 	}
 
 	// DbIndex defines index of columns in information_schema.statistic
@@ -81,10 +82,10 @@ func (m *InformationSchemaModel) GetAllTables(database string) ([]string, error)
 		Select("TABLE_NAME").
 		Where("TABLE_SCHEMA = ?", database).
 		Find(&tables).Error
+
 	if err != nil {
 		return nil, err
 	}
-
 	return tables, nil
 }
 
