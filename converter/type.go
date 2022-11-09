@@ -135,7 +135,7 @@ var commonMysqlDataTypeMapString = map[string]string{
 func ConvertDataType(dataBaseType int, isDefaultNull, unsigned, strict bool) (string, error) {
 	tp, ok := commonMysqlDataTypeMapInt[dataBaseType]
 	if !ok {
-		return "", fmt.Errorf("unsupported database type: %v", dataBaseType)
+		return "", fmt.Errorf("unsupported database type: %d", dataBaseType)
 	}
 
 	return mayConvertNullType(tp, isDefaultNull, unsigned, strict), nil
