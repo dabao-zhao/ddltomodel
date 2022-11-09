@@ -3,7 +3,7 @@ package template
 // ErrorTpl defines an error template
 const ErrorTpl = `package {{.pkg}}
 
-import "github.com/zeromicro/go-zero/core/stores/sqlx"
+import "gorm.io/gorm"
 
-var ErrNotFound = sqlx.ErrNotFound
+var ErrNotFound = gorm.ErrRecordNotFound
 `
