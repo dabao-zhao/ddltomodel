@@ -3,6 +3,11 @@ package gen
 import (
 	"bytes"
 	"fmt"
+	"log"
+	"os"
+	"path/filepath"
+	"strings"
+
 	"github.com/dabao-zhao/ddltomodel/model"
 	"github.com/dabao-zhao/ddltomodel/output"
 	"github.com/dabao-zhao/ddltomodel/parser"
@@ -10,10 +15,6 @@ import (
 	"github.com/dabao-zhao/ddltomodel/util/filex"
 	"github.com/dabao-zhao/ddltomodel/util/stringx"
 	"github.com/dabao-zhao/ddltomodel/util/trim"
-	"log"
-	"os"
-	"path/filepath"
-	"strings"
 )
 
 const pwd = "."

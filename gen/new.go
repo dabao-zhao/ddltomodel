@@ -1,10 +1,11 @@
 package gen
 
 import (
+	"fmt"
+
 	"github.com/dabao-zhao/ddltomodel/output"
 	"github.com/dabao-zhao/ddltomodel/template"
 	"github.com/dabao-zhao/ddltomodel/util/filex"
-	"fmt"
 )
 
 func genNew(table Table) (string, error) {

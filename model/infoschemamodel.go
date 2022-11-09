@@ -3,9 +3,11 @@ package model
 import (
 	"database/sql"
 	"fmt"
-	"github.com/dabao-zhao/ddltomodel/util/trim"
-	"gorm.io/gorm"
 	"sort"
+
+	"github.com/dabao-zhao/ddltomodel/util/trim"
+
+	"gorm.io/gorm"
 )
 
 const indexPri = "PRIMARY"

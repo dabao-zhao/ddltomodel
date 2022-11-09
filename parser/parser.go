@@ -2,14 +2,15 @@ package parser
 
 import (
 	"fmt"
+	"path/filepath"
+	"sort"
+	"strings"
+
 	"github.com/dabao-zhao/ddltomodel/converter"
 	"github.com/dabao-zhao/ddltomodel/model"
 	"github.com/dabao-zhao/ddltomodel/util/collection"
 	"github.com/dabao-zhao/ddltomodel/util/stringx"
 	"github.com/dabao-zhao/ddltomodel/util/trim"
-	"path/filepath"
-	"sort"
-	"strings"
 
 	"github.com/zeromicro/ddl-parser/console"
 	"github.com/zeromicro/ddl-parser/parser"

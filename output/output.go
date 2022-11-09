@@ -2,11 +2,12 @@ package output
 
 import (
 	"bytes"
-	"github.com/dabao-zhao/ddltomodel/util/filex"
 	"fmt"
 	goformat "go/format"
 	"os"
 	"text/template"
+
+	"github.com/dabao-zhao/ddltomodel/util/filex"
 )
 
 const regularPerm = 0o666

@@ -1,11 +1,12 @@
 package gen
 
 import (
+	"strings"
+
 	"github.com/dabao-zhao/ddltomodel/output"
 	"github.com/dabao-zhao/ddltomodel/template"
 	"github.com/dabao-zhao/ddltomodel/util/filex"
 	"github.com/dabao-zhao/ddltomodel/util/stringx"
-	"strings"
 )
 
 func genFindOne(table Table) (string, string, error) {

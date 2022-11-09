@@ -1,11 +1,11 @@
 package filex
 
 import (
-	"github.com/dabao-zhao/ddltomodel/version"
-	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
+
+	"github.com/dabao-zhao/ddltomodel/version"
 )
 
 const (
@@ -45,10 +45,14 @@ func GetTemplateDir() (string, error) {
 		// backward compatible, it will be removed in the feature
 		// backward compatible start.
 		beforeTemplateDir := filepath.Join(home, version.GetThisToolVersion())
-		fs, _ := ioutil.ReadDir(beforeTemplateDir)
+		fs, _ := os.ReadDir(beforeTemplateDir)
 		var hasContent bool
 		for _, e := range fs {
-			if e.Size() > 0 {
+			info, err := e.Info()
+			if err != nil {
+				return "", err
+			}
+			if info.Size() > 0 {
 				hasContent = true
 			}
 		}

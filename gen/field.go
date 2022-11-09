@@ -1,12 +1,13 @@
 package gen
 
 import (
+	"strings"
+
 	"github.com/dabao-zhao/ddltomodel/output"
 	"github.com/dabao-zhao/ddltomodel/parser"
 	"github.com/dabao-zhao/ddltomodel/template"
 	"github.com/dabao-zhao/ddltomodel/util/filex"
 	"github.com/dabao-zhao/ddltomodel/util/stringx"
-	"strings"
 )
 
 func genFields(table Table, fields []*parser.Field) (string, error) {

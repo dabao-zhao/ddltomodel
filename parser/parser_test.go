@@ -1,13 +1,13 @@
 package parser
 
 import (
-	"github.com/dabao-zhao/ddltomodel/util/trim"
 	_ "embed"
 	"os"
 	"path/filepath"
 	"testing"
 
 	"github.com/dabao-zhao/ddltomodel/util/filex"
+	"github.com/dabao-zhao/ddltomodel/util/trim"
 
 	"github.com/stretchr/testify/assert"
 )

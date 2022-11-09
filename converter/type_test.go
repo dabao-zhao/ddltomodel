@@ -1,9 +1,11 @@
 package converter
 
 import (
-	"github.com/stretchr/testify/assert"
-	"github.com/zeromicro/ddl-parser/parser"
 	"testing"
+
+	"github.com/zeromicro/ddl-parser/parser"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestConvertDataType(t *testing.T) {

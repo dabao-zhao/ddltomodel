@@ -1,14 +1,16 @@
 package command
 
 import (
-	"github.com/dabao-zhao/ddltomodel/gen"
-	"github.com/dabao-zhao/ddltomodel/util/filex"
 	_ "embed"
 	"errors"
-	"github.com/stretchr/testify/assert"
 	"os"
 	"path/filepath"
 	"testing"
+
+	"github.com/dabao-zhao/ddltomodel/gen"
+	"github.com/dabao-zhao/ddltomodel/util/filex"
+
+	"github.com/stretchr/testify/assert"
 )
 
 var (
