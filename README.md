@@ -5,7 +5,7 @@
 ## 安装
 
 ```shell
-go install github.com/dabao-zhao/ddltomodel
+go install github.com/dabao-zhao/ddltomodel@latest
 ```
 
 ## 使用
