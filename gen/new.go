@@ -14,7 +14,7 @@ func genNew(table Table) (string, error) {
 		return "", err
 	}
 
-	t := fmt.Sprintf(`"%s"`, wrapWithRawString(table.Name.Source()))
+	t := fmt.Sprintf(`"%s"`, table.Name.Source())
 
 	buffer, err := output.With("new").
 		Parse(text).
