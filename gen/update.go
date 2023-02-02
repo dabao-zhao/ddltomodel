@@ -40,12 +40,6 @@ func genUpdate(table Table) (string, string, error) {
 		map[string]interface{}{
 			"upperStartCamelObject": camelTableName,
 			"lowerStartCamelObject": stringx.From(camelTableName).Untitle(),
-			"upperStartCamelPrimaryKey": stringx.EscapeGolangKeyword(
-				stringx.From(table.PrimaryKey.Name.ToCamel()).Title(),
-			),
-			"lowerStartCamelPrimaryKey": stringx.EscapeGolangKeyword(
-				stringx.From(table.PrimaryKey.Name.ToCamel()).Untitle(),
-			),
 			"originalPrimaryKey": wrapWithRawString(
 				table.PrimaryKey.Name.Source(),
 			),
