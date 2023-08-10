@@ -219,7 +219,11 @@ func (g *defaultGenerator) genModel(in parser.Table) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	findCode = append(findCode, findOneCode)
+	findAllCode, findAllCodeMethod, err := genFindAll(table)
+	if err != nil {
+		return "", err
+	}
+	findCode = append(findCode, findOneCode, findAllCode)
 
 	updateCode, updateCodeMethod, err := genUpdate(table)
 	if err != nil {
@@ -236,6 +240,7 @@ func (g *defaultGenerator) genModel(in parser.Table) (string, error) {
 		list,
 		insertCodeMethod,
 		findOneCodeMethod,
+		findAllCodeMethod,
 		updateCodeMethod,
 		deleteCodeMethod,
 	)
